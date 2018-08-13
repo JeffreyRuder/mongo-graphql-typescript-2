@@ -38,6 +38,5 @@ yarn build
 yarn start
 ```
 
-This example does not make full use of TypeScripts features as strict type checking is disabled.
 
-![screenshot of graphiql ui](./screenshot.png)
+![screenshot of postman](./screenshot.png)
