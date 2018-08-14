@@ -39,6 +39,10 @@ This project uses yarn. `brew install yarn` if you don't have it.
 * `yarn build` to compile .js files in the dist/ directory.
 * `yarn run-build` to run from the dist/ directory.
 
+### Breakpoint Debugging
+
+The `launch.json` in `.vscode` configures VSCode's breakpoint debugging; normally I would gitignore this but I'm leaving it in as an example.
+
 ### Interactive UI
 
 To use the `graphiql` interactive UI for development, navigate to `http://localhost:3000/graphql` with a web browser.
