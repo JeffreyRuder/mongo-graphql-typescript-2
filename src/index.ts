@@ -4,12 +4,11 @@ import { GraphQLSchema, GraphQLObjectType, GraphQLList } from 'graphql';
 import { getMongoDbQueryResolver, getGraphQLFilterType, getGraphQLSortType, GraphQLPaginationType } from 'graphql-to-mongodb'
 import { AnimalType } from './animal-type';
 import expressgraphql from 'express-graphql';
-
-
+import { MongoDbOptions } from '../node_modules/graphql-to-mongodb/lib/src/queryResolver';
+import { MongoDbProjection } from '../node_modules/graphql-to-mongodb/lib/src/mongoDbProjection';
 
 class App {
     public app: express.Application;
-
     constructor() {
         this.app = express();
     }
@@ -27,7 +26,7 @@ const graphQLschema = new GraphQLSchema({
                     pagination: { type: GraphQLPaginationType }
                 },
                 resolve: getMongoDbQueryResolver(AnimalType, 
-                    async (filter, projection, options, obj, args, context) => {
+                    async (filter, projection: MongoDbProjection, options: MongoDbOptions, obj, args, context) => {
                         options.projection = projection;
                         return await context.db.collection('animals').find(filter, options).toArray();
                     }
@@ -37,7 +36,7 @@ const graphQLschema = new GraphQLSchema({
     })
 })
 
-async function main() {
+function main() {
     const DB: Database = new Database("mongodb://localhost:27017", "poc_test");
 
     const app = new App().app
@@ -46,7 +45,8 @@ async function main() {
             schema: graphQLschema,
             context: {
                 db: DB.database
-            }
+            },
+            graphiql: true
         })(req, res);
     });
 

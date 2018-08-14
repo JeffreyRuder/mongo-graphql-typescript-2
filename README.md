@@ -29,14 +29,19 @@ Assumes the existence of a local mongo database called `poc_test`, with a collec
     "noise" : "bark"
 }
 ```
+### Build and Run
 
-To build and run using the yarn package manager (`brew install yarn` if you don't have it):
+This project uses yarn. `brew install yarn` if you don't have it.
 
-```
-yarn install
-yarn build
-yarn start
-```
+* `yarn install` to load dependencies.
+* `yarn start` to compile and run - this project uses ts-node for one-step compile and run.
+* `yarn dev` to compile, run, and automatically reload with nodemon.
+* `yarn build` to compile .js files in the dist/ directory.
+* `yarn run-build` to run from the dist/ directory.
+
+### Interactive UI
+
+To use the `graphiql` interactive UI for development, navigate to `http://localhost:3000/graphql` with a web browser.
 
 
 ![screenshot of postman](./screenshot.png)
