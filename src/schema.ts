@@ -1,6 +1,7 @@
 import { GraphQLObjectType, GraphQLList } from 'graphql'
-import { getMongoDbQueryResolver, getGraphQLFilterType, getGraphQLSortType, GraphQLPaginationType } from 'graphql-to-mongodb'
+import { getMongoDbQueryResolver, getGraphQLFilterType, getGraphQLSortType, GraphQLPaginationType, getGraphQLInsertType } from 'graphql-to-mongodb'
 import { AnimalType } from './animal-type'
+import { AcknowledgeType } from './acknowedge-type';
 
 export const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
@@ -21,4 +22,19 @@ export const RootQuery = new GraphQLObjectType({
             )
     }
   }
+})
+
+export const RootMutation = new GraphQLObjectType({
+  name: 'RootMutationType',
+  fields: {
+    create: {
+      type: AcknowledgeType,
+      description: 'create a new animal',
+      args: {
+        animal: {type: getGraphQLInsertType(AnimalType)}
+      },
+      resolve: async (object, args, context, info) => {
+        return (await context.db.collection('animals').insertOne(args.animal)).result;
+      }
+  }}
 })

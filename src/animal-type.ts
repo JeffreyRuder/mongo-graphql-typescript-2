@@ -1,19 +1,19 @@
-import { GraphQLObjectType, GraphQLString, GraphQLID } from 'graphql/type'
+import { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLNonNull } from 'graphql/type'
 
 export const AnimalType = new GraphQLObjectType({
   name: 'AnimalType',
   description: 'this GraphQL type represents an animal',
   fields: () => ({
     _id: {
-      type: GraphQLID,
+      type: new GraphQLNonNull(GraphQLID),
       description: "the animal's unique identifier"
     },
     name: {
-      type: GraphQLString,
+      type: new GraphQLNonNull(GraphQLString),
       description: "the animal's name"
     },
     noise: {
-      type: GraphQLString,
+      type: new GraphQLNonNull(GraphQLString),
       description: 'the noise the animal makes'
     }
   })
