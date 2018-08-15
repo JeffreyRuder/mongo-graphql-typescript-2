@@ -1,4 +1,5 @@
 import { GraphQLInt, GraphQLString, GraphQLObjectType } from 'graphql/type'
+import { AnimalType } from './animal-type';
 
 export const HTTPStatusType = new GraphQLObjectType({
   name: 'HTTPStatusType',
@@ -7,6 +8,10 @@ export const HTTPStatusType = new GraphQLObjectType({
     url: {
       type: GraphQLString,
       description: 'the url that the POST request was made to'
+    },
+    animal: {
+      type: AnimalType,
+      description: 'the animal that was posted'
     },
     statusCode: { type: GraphQLInt },
     status: { type: GraphQLString }

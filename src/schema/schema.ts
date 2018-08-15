@@ -48,6 +48,7 @@ export const RootQuery = new GraphQLObjectType({
         const result = await request.post(requestOptions)
         return {
           url: result.request.href,
+          animal: animal,
           status: result.statusMessage,
           statusCode: result.statusCode
         }
