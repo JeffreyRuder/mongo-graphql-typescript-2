@@ -2,7 +2,7 @@ import express from 'express'
 import { Database } from './database'
 import { GraphQLSchema } from 'graphql'
 import expressgraphql from 'express-graphql'
-import { RootQuery, RootMutation } from './schema'
+import { RootQuery, RootMutation } from './schema/schema'
 
 const graphQLschema = new GraphQLSchema({
   query: RootQuery,
