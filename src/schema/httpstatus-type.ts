@@ -1,5 +1,5 @@
 import { GraphQLInt, GraphQLString, GraphQLObjectType } from 'graphql/type'
-import { AnimalType } from './animal-type';
+import { AnimalType } from './animal-type'
 
 export const HTTPStatusType = new GraphQLObjectType({
   name: 'HTTPStatusType',
