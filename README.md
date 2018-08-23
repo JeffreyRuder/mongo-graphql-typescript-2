@@ -1,4 +1,4 @@
-## GraphQL MongoDB TypeScript Example 1
+## GraphQL MongoDB TypeScript Example 2
 
 This example demonstrates use of:
 * TypeScript
